@@ -1,15 +1,24 @@
 <script setup lang="ts">
 import { RouterView } from "vue-router";
 
+
 import TheHeader from "./components/TheHeader.vue";
 import HeroProducts from "./components/HeroProducts.vue";
 
+import { useUserStore } from "./stores/userStore";
+import { storeToRefs } from "pinia";
+
+const userStore = useUserStore();
+const { name } = storeToRefs(userStore);
+
 // fetch('https://fakestoreapi.com/products')
+
+
 </script>
 
 <template>
   <header>
-    <TheHeader />
+    <TheHeader :user="name"/>
   </header>
 
   <main>

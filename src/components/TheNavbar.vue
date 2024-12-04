@@ -29,7 +29,7 @@ function promptForName() {
       Välkommen, {{ user }}!
     </span>
     <span v-else>
-      <button @click="promptForName" class="inline-button">Login</button>
+      <button @click="promptForName" class="inline-button">Logga in</button>
     </span>
     <button class="inline-button">kundkorg (0)</button>
   </nav>
@@ -50,5 +50,9 @@ function promptForName() {
 .inline-button {
   display: inline-block;
   margin-left: 1rem;
+}
+
+span {
+  margin: 0 .5rem;
 }
 </style>

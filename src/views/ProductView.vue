@@ -1,6 +1,16 @@
+<script setup lang="ts">
+import { computed } from 'vue';
+import { useRoute } from 'vue-router';
+const route = useRoute() 
+
+const path = computed(() => {
+  route.name === 'smycken' ? 'smycken' : route.name
+})
+</script>
+
 <template>
   <div class="product">
-    <h1>Product view</h1>
+    <h1>Utvald kollektion av {{ $route.name }} {{ path }}</h1>
   </div>
 </template>
 

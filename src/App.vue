@@ -9,6 +9,7 @@ import TheHeader from './components/TheHeader.vue';
   </header>
 
   <main>
+    <p>home{{ $route.fullPath }}</p>
     <RouterView />
   </main>
 </template>

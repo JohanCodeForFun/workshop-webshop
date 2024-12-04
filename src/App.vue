@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { RouterView } from "vue-router";
 
-
 import TheHeader from "./components/TheHeader.vue";
 import HeroProducts from "./components/HeroProducts.vue";
 
@@ -11,7 +10,41 @@ import { storeToRefs } from "pinia";
 const userStore = useUserStore();
 const { name } = storeToRefs(userStore);
 
-// fetch('https://fakestoreapi.com/products')
+const message = "Välkommen till Häng På Kroken"
+
+import type { Product } from "./types/interface";
+import { useFetch } from "@vueuse/core";
+
+  import { onMounted, watch } from "vue";
+
+
+  const { data, error, isFetching } = useFetch<Product[]>(
+    "https://fakestoreapi.com/products"
+  ).json<Product[]>();
+
+  watch(isFetching, (newVal, oldVal) => {
+    if (newVal && !oldVal) {
+      console.log({
+        watch: "Loading started",
+        "Loading state": isFetching.value,
+      });
+    } else if (!newVal && oldVal) {
+      console.log({
+        watch: "Loading complete",
+        "Loading state": isFetching.value,
+      });
+      console.log(data.value);
+    }
+  });
+
+  onMounted(() => {
+    if (!isFetching.value) {
+      console.log("onMounted: Loading started");
+    } else {
+      console.log("onMounted: Loading complete");
+      console.log(data.value);
+    }
+  });
 
 
 </script>

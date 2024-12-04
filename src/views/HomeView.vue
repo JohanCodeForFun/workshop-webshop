@@ -4,7 +4,7 @@
 <template>
   <main>
     <div class="about">
-    <h1>Utvald kollektion av bäst säljare</h1>
+    <h1>Utvald kollektion av bästsäljare</h1>
   </div>
   </main>
 </template>

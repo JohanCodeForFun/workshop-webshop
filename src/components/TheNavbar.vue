@@ -2,9 +2,9 @@
   <nav class="navbar">
     <div class="nav-links">
       <RouterLink to="/">Hem</RouterLink>
-      <RouterLink to="/">Dam</RouterLink>
-      <RouterLink to="/about">Herr</RouterLink>
-      <RouterLink to="/about">Smycken</RouterLink>
+      <RouterLink to="/dam">Dam</RouterLink>
+      <RouterLink to="/herr">Herr</RouterLink>
+      <RouterLink to="/smycken">Smycken</RouterLink>
     </div>
     <button class="inline-button">kundkorg (0)</button>
   </nav>

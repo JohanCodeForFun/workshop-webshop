@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useFetch } from '@vueuse/core';
 import { computed } from 'vue';
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import type { Product } from '@/types/interface';
 
 const { data, error, isFetching } = useFetch<Product[]>(
@@ -9,6 +9,7 @@ const { data, error, isFetching } = useFetch<Product[]>(
 ).json<Product[]>();
 
 const route = useRoute();
+const router = useRouter();
 
 const filteredProducts = computed(() => {
   if (!data.value) return [];
@@ -24,12 +25,23 @@ const filteredProducts = computed(() => {
       return data.value;
   }
 });
+
+function viewProduct(product: Product) {
+  router.push({ 
+    path: `${route.path}/${product.id}`,
+    state: { product: JSON.stringify(product) }
+  });
+}
 </script>
 
 <template>
   <div class="hero-products">
-      <div class="product-card" v-for="product in filteredProducts" :key="product.id">
-        <img :src="product.image" width="300" height="auto" alt="" />
+      <div class="product-card"
+        v-for="product in filteredProducts" 
+        :key="product.id"
+        @click="viewProduct(product)"
+        >
+        <img :src="product.image" width="300" height="auto" :alt="product.title" />
         <p>{{ product.title }}</p>
         <p>{{ product.description }}</p>
         <p>

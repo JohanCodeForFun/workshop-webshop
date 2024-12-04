@@ -23,6 +23,11 @@ const router = createRouter({
       name: 'smycken',
       component: () => import('../views/ProductView.vue'),
     },
+    {
+      path: '/:product/:id',
+      name: 'product detail',
+      component: () => import('../views/ProductDetail.vue'),
+    },
   ],
 })
 

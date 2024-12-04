@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import { useUserStore } from "../stores/userStore";
+import { inject } from "vue";
 
-defineProps<{
-  user: string
-}>();
+const userName = inject('user', 'default');
 
 const userStore = useUserStore();
 
@@ -23,8 +22,8 @@ function promptForName() {
       <RouterLink to="/herr">Herr</RouterLink>
       <RouterLink to="/smycken">Smycken</RouterLink>
     </div>
-    <span v-if="user">
-      Välkommen, {{ user }}!
+    <span v-if="userName">
+      Välkommen, {{ userName }}!
     </span>
     <span v-else>
       <button @click="promptForName" class="inline-button">Logga in</button>

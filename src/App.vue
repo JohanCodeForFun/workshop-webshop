@@ -6,9 +6,11 @@ import HeroProducts from "./components/HeroProducts.vue";
 
 import { useUserStore } from "./stores/userStore";
 import { storeToRefs } from "pinia";
+import { provide } from "vue";
 
 const userStore = useUserStore();
 const { name } = storeToRefs(userStore);
+provide('user', name)
 
 const message = "Välkommen till Häng På Kroken";
 
@@ -22,7 +24,7 @@ const { data, error, isFetching } = useFetch<Product[]>(
 
 <template>
   <header>
-    <TheHeader :user="name" />
+    <TheHeader />
   </header>
 
   <main>

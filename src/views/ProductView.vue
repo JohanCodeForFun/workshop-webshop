@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useRoute } from 'vue-router';
+import ProductList from '@/components/ProductList.vue';
+
 const route = useRoute() 
 
 const path = computed(() => {
@@ -11,6 +13,9 @@ const path = computed(() => {
 <template>
   <div class="product">
     <h1>Utvald kollektion av {{ $route.name }} {{ path }}</h1>
+  </div>
+  <div>
+    <ProductList />
   </div>
 </template>
 

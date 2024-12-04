@@ -1,13 +1,11 @@
 <script setup lang="ts">
+import { useUserStore } from "../stores/userStore";
+
 defineProps<{
   user: string
 }>();
 
-import { useUserStore } from "../stores/userStore";
-import { storeToRefs } from "pinia";
-
 const userStore = useUserStore();
-const { name } = storeToRefs(userStore);
 
 function promptForName() {
   const userName = prompt('Var vänlig ange login namn')

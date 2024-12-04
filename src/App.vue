@@ -10,56 +10,27 @@ import { storeToRefs } from "pinia";
 const userStore = useUserStore();
 const { name } = storeToRefs(userStore);
 
-const message = "Välkommen till Häng På Kroken"
+const message = "Välkommen till Häng På Kroken";
 
 import type { Product } from "./types/interface";
 import { useFetch } from "@vueuse/core";
 
-  import { onMounted, watch } from "vue";
-
-
-  const { data, error, isFetching } = useFetch<Product[]>(
-    "https://fakestoreapi.com/products"
-  ).json<Product[]>();
-
-  watch(isFetching, (newVal, oldVal) => {
-    if (newVal && !oldVal) {
-      console.log({
-        watch: "Loading started",
-        "Loading state": isFetching.value,
-      });
-    } else if (!newVal && oldVal) {
-      console.log({
-        watch: "Loading complete",
-        "Loading state": isFetching.value,
-      });
-      console.log(data.value);
-    }
-  });
-
-  onMounted(() => {
-    if (!isFetching.value) {
-      console.log("onMounted: Loading started");
-    } else {
-      console.log("onMounted: Loading complete");
-      console.log(data.value);
-    }
-  });
-
-
+const { data, error, isFetching } = useFetch<Product[]>(
+  "https://fakestoreapi.com/products"
+).json<Product[]>();
 </script>
 
 <template>
   <header>
-    <TheHeader :user="name"/>
+    <TheHeader :user="name" />
   </header>
 
   <main>
     <p>home{{ $route.fullPath }}</p>
     <h1>{{ message }}</h1>
 
-    <HeroProducts :products="data"/>
-    
+    <HeroProducts :products="data" />
+
     <RouterView />
   </main>
 </template>

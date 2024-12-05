@@ -17,7 +17,7 @@ const { data, error, isFetching } = useFetch<Product[]>(
     <div class="about">
     <h1>Utvald kollektion av bästsäljare</h1>
 
-    <HeroProducts v-if="route.path === '/'" :products="data" />
+    <HeroProducts :products="data" />
 
   </div>
   </main>

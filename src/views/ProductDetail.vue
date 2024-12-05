@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { Product } from '@/types/interface';
 
+const product = JSON.parse(history.state.product) as Product;
 </script>
 
 <template>

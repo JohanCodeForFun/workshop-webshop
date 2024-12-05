@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { RouterView, useRoute } from "vue-router";
+import { RouterView } from "vue-router";
 
 import TheHeader from "./components/TheHeader.vue";
 
@@ -12,8 +12,6 @@ const { name } = storeToRefs(userStore);
 provide('user', name)
 
 const message = "Välkommen till Häng På Kroken";
-
-const route = useRoute();
 </script>
 
 <template>
@@ -23,7 +21,7 @@ const route = useRoute();
 
   <main>
     <p>home{{ $route.fullPath }}</p>
-    <h1 v-if="route.path === '/'">{{ message }}</h1>
+    <h1>{{ message }}</h1>
 
     <RouterView />
   </main>
